@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristiano Almeida | Portfólio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #9b59b6;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --success: #2ecc71;
+            --gray: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        h2::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 8rem;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.05) 0%, rgba(52, 152, 219, 0.05) 100%);
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            margin-bottom: 1rem;
+        }
+        
+        .hero-text p {
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+        
+        .hero-image {
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid white;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--light);
+            border-radius: 50%;
+            color: var(--primary);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        /* About Section */
+        .about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .skill-tag {
+            background-color: var(--light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+        
+        .education {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        
+        .education h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .education-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .education-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            background-color: #f9f9f9;
+        }
+        
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-btn {
+            background-color: var(--light);
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .portfolio-img {
+            height: 200px;
+            width: 100%;
+            background-color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--secondary);
+        }
+        
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+        
+        .portfolio-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .portfolio-content p {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+        
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tag {
+            background-color: var(--light);
+            padding: 0.3rem 0.7rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--primary);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: white;
+            text-align: center;
+        }
+        
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .footer-logo span {
+            color: var(--secondary);
+        }
+        
+        .footer-text {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                padding: 1rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Cristiano<span>Almeida</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Cristiano Almeida</h1>
+                    <h2>Educador em Tecnologias & Desenvolvedor</h2>
+                    <p>Profissional com experiência em educação tecnológica e desenvolvimento de soluções inovadoras. Apaixonado por ensinar, aprender e criar ferramentas que facilitam a vida das pessoas e otimizam processos.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/cristiano-almeida" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/cristiano-marcio-araujo-almeida/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                    <a href="#portfolio" class="btn">Ver Portfólio</a>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-img">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Sobre Mim</h2>
+            <div class="about-content">
+                <div>
+                    <p>Sou um profissional dedicado à interseção entre educação e tecnologia, com experiência em desenvolver soluções práticas e educativas que resolvem problemas reais.</p>
+                    <p>Minha trajetória inclui trabalhos acadêmicos na área de modelagem computacional aplicada à saúde, desenvolvimento de ferramentas educacionais interativas e projetos de conscientização social. Acredito no poder da tecnologia como ferramenta de transformação e no potencial da educação para capacitar pessoas.</p>
+                    <p>Tenho experiência com diversas tecnologias e metodologias, incluindo:</p>
+                    <div class="skills">
+                        <span class="skill-tag">HTML/CSS/JavaScript</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Modelagem Computacional</span>
+                        <span class="skill-tag">Git & GitHub</span>
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">Metodologias Ágeis</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Educação Tecnológica</span>
+                    </div>
+                </div>
+                <div class="education">
+                    <h3>Formação & Experiência</h3>
+                    <div class="education-item">
+                        <h4>Educador em Tecnologias</h4>
+                        <p>Desenvolvimento de materiais educacionais e ferramentas de aprendizado interativas</p>
+                    </div>
+                    <div class="education-item">
+                        <h4>Modelagem Computacional - UFJF</h4>
+                        <p>Disciplina isolada com foco em aplicações de IA e otimização em saúde</p>
+                    </div>
+                    <div class="education-item">
+                        <h4>Desenvolvedor Frontend</h4>
+                        <p>Criação de aplicações web responsivas e interativas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2>Meu Portfólio</h2>
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="academico">Acadêmico</button>
+                <button class="filter-btn" data-filter="educacional">Educacional</button>
+                <button class="filter-btn" data-filter="social">Social</button>
+                <button class="filter-btn" data-filter="ferramenta">Ferramentas</button>
+            </div>
+            <div class="portfolio-grid">
+                <!-- Projeto 1 -->
+                <div class="portfolio-item" data-category="academico">
+                    <div class="portfolio-img" style="background: linear-gradient(135deg, #3498db, #2c3e50);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Pipeline de Predição e Otimização de UTI</h3>
+                        <p>Disciplina isolada - Modelagem Computacional - UFJF</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Otimização</span>
+                            <span class="tag">Saúde</span>
+                        </div>
+                        <a href="https://almeida-cma.github.io/f6/" target="_blank" rel="noopener noreferrer" class="btn">Ver Projeto</a>
+                    </div>
+                </div>
+                
+                <!-- Projeto 2 -->
+                <div class="portfolio-item" data-category="academico">
+                    <div class="portfolio-img" style="background: linear-gradient(135deg, #9b59b6, #3498db);">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Simulação - IA para Gestão de UTI</h3>
+                        <p>Arquitetura híbrida: ML (XGBoost) + Computação Evolucionista (NSGA-II)</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Inteligência Artificial</span>
+                            <span class="tag">Simulação</span>
+                            <span class="tag">Computação Evolucionista</span>
+                        </div>
+                        <a href="https://almeida-cma.github.io/f3/" target="_blank" rel="noopener noreferrer" class="btn">Ver Projeto</a>
+                    </div>
+                </div>
+                
+                <!-- Projeto 3 -->
+                <div class="portfolio-item" data-category="ferramenta educacional">
+                    <div class="portfolio-img" style="background: linear-gradient(135deg, #2ecc71, #3498db);">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>MyStudyTasks 📚</h3>
+                        <p>Organizador de tarefas de estudo completo, interativo e 100% personalizável</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Produtividade</span>
+                            <span class="tag">Educação</span>
+                        </div>
+                        <a href="https://almeida-cma.github.io/tarefas/" target="_blank" rel="noopener noreferrer" class="btn">Ver Projeto</a>
+                    </div>
+                </div>
+                
+                <!-- Projeto 4 -->
+                <div class="portfolio-item" data-category="social">
+                    <div class="portfolio-img" style="background: linear-gradient(135deg, #3498db, #1a252f);">
+                        <i class="fas fa-ribbon"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Projeto Novembro Azul</h3>
+                        <p>Mês Mundial de Combate ao Câncer de Próstata</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Conscientização</span>
+                            <span class="tag">Saúde</span>
+                            <span class="tag">Social</span>
+                        </div>
+                        <a href="https://almeida-cma.github.io/Projeto_Novembro_Azul/" target="_blank" rel="noopener noreferrer" class="btn">Ver Projeto</a>
+                    </div>
+                </div>
+                
+                <!-- Projeto 5 -->
+                <div class="portfolio-item" data-category="educacional">
+                    <div class="portfolio-img" style="background: linear-gradient(135deg, #f39c12, #e74c3c);">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Sprint Proz</h3>
+                        <p>Evento de inovação para aprimorar sistema de orçamentos já funcional</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Inovação</span>
+                            <span class="tag">Trabalho em Equipe</span>
+                            <span class="tag">Protótipo</span>
+                        </div>
+                        <a href="https://almeida-cma.github.io/sprint/" target="_blank" rel="noopener noreferrer" class="btn">Ver Projeto</a>
+                    </div>
+                </div>
+                
+                <!-- Projeto 6 -->
+                <div class="portfolio-item" data-category="social">
+                    <div class="portfolio-img" style="background: linear-gradient(135deg, #e84393, #9b59b6);">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Outubro Rosa</h3>
+                        <p>Conscientização sobre a Prevenção e Diagnóstico Precoce do Câncer de Mama</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Conscientização</span>
+                            <span class="tag">Saúde Feminina</span>
+                            <span class="tag">Social</span>
+                        </div>
+                        <a href="https://almeida-cma.github.io/nuvem/" target="_blank" rel="noopener noreferrer" class="btn">Ver Projeto</a>
+                    </div>
+                </div>
+                
+                <!-- Projeto 7 -->
+                <div class="portfolio-item" data-category="ferramenta educacional">
+                    <div class="portfolio-img" style="background: linear-gradient(135deg, #2c3e50, #7f8c8d);">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Gerenciador de Projetos – Protótipo Interativo</h3>
+                        <p>Projeto para apoiar o planejamento, acompanhamento e registro de etapas em trabalhos em grupo</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Gerenciamento</span>
+                            <span class="tag">Colaboração</span>
+                            <span class="tag">Protótipo</span>
+                        </div>
+                        <a href="https://almeida-cma.github.io/Gerenciador_Projetos/" target="_blank" rel="noopener noreferrer" class="btn">Ver Projeto</a>
+                    </div>
+                </div>
+                
+                <!-- Projeto 8 -->
+                <div class="portfolio-item" data-category="educacional">
+                    <div class="portfolio-img" style="background: linear-gradient(135deg, #1abc9c, #3498db);">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Mercado de Trabalho em TI</h3>
+                        <p>Descubra onde o Técnico em Desenvolvimento de Sistemas pode chegar e as diversas áreas de atuação</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Educação</span>
+                            <span class="tag">Carreira</span>
+                            <span class="tag">TI</span>
+                        </div>
+                        <a href="https://almeida-cma.github.io/mercado_ti/" target="_blank" rel="noopener noreferrer" class="btn">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <div class="contact-content">
+                <p>Estou sempre aberto a novas oportunidades, colaborações e conversas sobre tecnologia e educação. Sinta-se à vontade para entrar em contato!</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <h4>GitHub</h4>
+                        <a href="https://github.com/cristiano-almeida" target="_blank" rel="noopener noreferrer">cristiano-almeida</a>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <h4>LinkedIn</h4>
+                        <a href="https://www.linkedin.com/in/cristiano-marcio-araujo-almeida/" target="_blank" rel="noopener noreferrer">Cristiano Almeida</a>
+                    </div>
+                </div>
+                <a href="mailto:almeida.cma@gmail.com" class="btn" style="margin-top: 2rem;">Enviar Email</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Cristiano<span>Almeida</span></div>
+                <p class="footer-text">Educador em Tecnologias & Desenvolvedor</p>
+                <p class="footer-text">Transformando ideias em soluções através da tecnologia e educação</p>
+                <div class="social-links" style="justify-content: center; margin-top: 2rem;">
+                    <a href="https://github.com/cristiano-almeida" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/cristiano-marcio-araujo-almeida/" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+                <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.9rem;">
+                    &copy; 2023 Cristiano Almeida. Todos os direitos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Portfolio Filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category').includes(filterValue)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+                header.style.padding = '0.7rem 0';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                header.style.padding = '1rem 0';
+            }
+        });
+    </script>
+</body>
+</html>
